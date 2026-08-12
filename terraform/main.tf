@@ -3,7 +3,7 @@ data "terraform_remote_state" "k8s" {
 
   config = {
     bucket = "bucket-tfstate-1029"
-    key    = "k8s/terraform.tfstate"
+    key    = "global/s3/terraform.tfstate"
     region = var.region
   }
 }

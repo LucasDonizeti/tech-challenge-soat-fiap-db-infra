@@ -11,14 +11,10 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  ECR_REPOSITORY: oficina-api
   TF_STATE_BUCKET: bucket-tfstate-1029
   TF_STATE_KEY: global/s3/terraform.tfstate
   TF_DYNAMODB_TABLE: meu-terraform-state-lock
   EKS_CLUSTER_NAME: oficina-cluster
-  HELM_RELEASE_NAME: oficina
-  HELM_CHART_PATH: k8s/oficina
-  K8S_NAMESPACE: default
 
 jobs:
   # JOB 1 — Terraform Plan (RDS)

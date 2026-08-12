@@ -11,7 +11,7 @@ on:
 env:
   AWS_REGION: us-east-1
   TF_STATE_BUCKET: bucket-tfstate-1029
-  TF_STATE_KEY: global/s3/terraform.tfstate
+  TF_STATE_KEY: db/terraform.tfstate
   TF_DYNAMODB_TABLE: meu-terraform-state-lock
   EKS_CLUSTER_NAME: oficina-cluster
 

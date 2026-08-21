@@ -1,15 +1,19 @@
+data "aws_vpc" "selected" {
+  id = var.vpc_id
+}
+
 # Security Group — permite acesso somente a partir dos nodes do EKS
 resource "aws_security_group" "rds" {
   name        = "${var.name}-sg"
-  description = "Acesso ao RDS somente dos nodes EKS"
+  description = "Acesso ao RDS a partir do bloco CIDR da VPC do EKS"
   vpc_id      = var.vpc_id
 
   ingress {
-    description     = "MySQL dos nodes EKS"
-    from_port       = 3306
-    to_port         = 3306
-    protocol        = "tcp"
-    security_groups = [var.eks_node_sg_id]
+    description = "MySQL a partir da VPC do EKS"
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = [data.aws_vpc.selected.cidr_block]
   }
 
   egress {
